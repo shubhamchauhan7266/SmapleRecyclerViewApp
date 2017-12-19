@@ -1,18 +1,11 @@
 package com.smaplerecyclerviewapp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
-import android.transition.Slide;
-import android.transition.Visibility;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -26,7 +19,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private Context mContext;
     private IRecyclerViewAdapterCallBack iRecyclerViewAdapterCallBack;
 
-    public RecyclerViewAdapter(Context context, ArrayList<DataModel> dataModelList) {
+    RecyclerViewAdapter(Context context, ArrayList<DataModel> dataModelList) {
         mDataModelList = dataModelList;
         mContext = context;
         iRecyclerViewAdapterCallBack = (IRecyclerViewAdapterCallBack) context;
@@ -39,7 +32,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, final int position) {
+    public void onBindViewHolder(final MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         final DataModel dataModel = mDataModelList.get(position);
 
         if (dataModel.isClick) {
